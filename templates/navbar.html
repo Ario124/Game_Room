@@ -1,3 +1,17 @@
+
+<p>Logged in as {{request.user.username}}</p>
+<a href="{% url 'login' %}">
+    <p>Login</p>
+</a>
+<hr>
+
+
+<a href="{% url 'logout' %}">
+    <p>Logout</p>
+</a>
+
+
+
 <a href="/">
     <h1>Logo goes here!</h1>
 </a>
