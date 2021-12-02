@@ -3,5 +3,10 @@
 {% block content %}
 
 <h1>Home Page</h1>
+{% if request.user.is_authenticated %}
+<p>Logged in as {{request.user.username}}</p>
+{% else %}
+<p>Not logged in.</p>
+{% endif %}
 
 {% endblock %}
