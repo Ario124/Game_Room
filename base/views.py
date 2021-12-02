@@ -4,15 +4,23 @@ from django.shortcuts import render, redirect
 # from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
-from .models import User
+from .models import User, Room
 
 # Create your views here.
 
-def home(request):
-    return render(request, 'base/home.html')
 
-def room(request):
-    return render(request, 'base/room.html')
+
+
+def home(request):
+    rooms = Room.objects.all()
+    context = {'rooms': rooms}
+    return render(request, 'base/home.html', context)
+
+def room(request, pk):
+    room = Room.objects.get(id=pk)
+    context = {'room':room}
+
+    return render(request, 'base/room.html', context)
 
 def loginPage(request):
     page = 'login'

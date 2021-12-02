@@ -3,6 +3,18 @@
 {% block content %}
 
 <h1>Home Page</h1>
+
+<div>
+    <div>
+        {% for room in rooms %}
+        <div>
+            <h4>{{room.id}} -- <a href="{% url 'room' room.id %}">{{room.name}}</a></h4>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
 {% if request.user.is_authenticated %}
 <p>Logged in as {{request.user.username}}</p>
 {% else %}
