@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
 from .models import User, Room
+from .forms import RoomForm
 
 # Create your views here.
 
@@ -26,7 +27,7 @@ def loginPage(request):
     page = 'login'
 
     if request.user.is_authenticated:
-        return redirect('room')
+        return redirect('home')
 
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -41,7 +42,7 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
-            return redirect('room')
+            return redirect('home')
         else:
             messages.error(request, 'Username OR password does not exist')
 
@@ -51,3 +52,16 @@ def loginPage(request):
 def logoutPage(request):
     logout(request)
     return redirect('home')
+
+
+def createRoom(request):
+
+    form = RoomForm()
+    if request.method == 'POST':
+        form = RoomForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {'form':form}
+    return render(request, 'base/room_form.html', context)
