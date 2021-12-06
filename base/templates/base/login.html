@@ -4,6 +4,7 @@
 
 
 {% if page == 'login' %}
+<hr>
 <div>
     <form method="POST" action="">
         {% csrf_token %}
@@ -18,11 +19,11 @@
     </form>
 
     <p>Havent signed up yet?</p>
-    <a href="">Sign up</a>
+    <a href="{% url 'register' %}">Sign up</a>
 </div>
 
 {% else %}
-
+<hr>
 <div>
     <form method="POST" action="">
         {% csrf_token %}
