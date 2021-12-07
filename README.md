@@ -1,3 +1,3 @@
 # Game Room
 
-info goes here
+* Add servers in development and follow proccesses through a set of categories
