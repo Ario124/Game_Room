@@ -1,0 +1,12 @@
+
+
+{% block content %}'
+
+<div class="text-center text-light">
+    <h2>channel page</h2>
+    {% for channel in channels %}
+    <h4>{{channel.name}}</h4>
+    {% endfor %}
+</div>
+
+'{% endblock content %}'

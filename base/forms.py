@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Room
+from .models import User, Room, Channel
 
 
 class UserRegisterForm(UserCreationForm):
@@ -17,4 +17,10 @@ class UserForm(ModelForm):
 class RoomForm(ModelForm):
     class Meta:
         model = Room
+        fields = '__all__'
+
+
+class ChannelForm(ModelForm):
+    class Meta:
+        model = Channel
         fields = '__all__'

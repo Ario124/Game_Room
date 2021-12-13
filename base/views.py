@@ -4,10 +4,9 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
-from .models import User, Room, Topic, Message
-from .forms import RoomForm, UserRegisterForm
+from .models import User, Room, Topic, Message, Channel
+from .forms import RoomForm, UserRegisterForm, ChannelForm
 
 # Create your views here.
 
@@ -32,6 +31,7 @@ def home(request):
     return render(request, 'base/home.html', context)
 
 def room(request, pk):
+    channels = Channel.objects.all()
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all().order_by('-created')
     participants = room.participants.all()
@@ -45,7 +45,7 @@ def room(request, pk):
         room.participants.add(request.user)
         return redirect('room', pk=room.id)
 
-    context = {'room':room, 'room_messages': room_messages, 'participants': participants}
+    context = {'room':room, 'room_messages': room_messages, 'participants': participants, 'channels':channels}
 
     return render(request, 'base/room.html', context)
 
@@ -162,3 +162,23 @@ def deleteMessage(request, pk):
         message.delete()
         return redirect('home')
     return render(request, 'base/delete.html', {'obj': message})
+
+
+def channel(request):
+    channels = Channel.objects.all()
+    context = {'channels':channels}
+
+    return render(request, 'base/channel.html', context)
+
+
+def createChannel(request):
+    form = ChannelForm()
+
+    if request.method == 'POST':
+        form = ChannelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    
+    context = {'form':form}
+    return render(request, 'base/channel_form.html', context)
