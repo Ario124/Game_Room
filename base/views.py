@@ -164,11 +164,28 @@ def deleteMessage(request, pk):
     return render(request, 'base/delete.html', {'obj': message})
 
 
-def channel(request):
-    channels = Channel.objects.all()
-    context = {'channels':channels}
+
+
+
+
+
+
+def channel(request, pk):
+    channel = Channel.objects.get(id=pk)
+    all_channels = Channel.objects.all()
+
+    context = {'channel':channel, 'all_channels': all_channels}
 
     return render(request, 'base/channel.html', context)
+
+
+
+
+# def channel(request, pk):
+#     channels = Channel.objects.get(id=pk)    
+#     context = {'channels': channels}
+
+#     return render(request, 'base/channel.html', context)
 
 
 def createChannel(request):

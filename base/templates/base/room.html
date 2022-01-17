@@ -19,7 +19,17 @@
                 <div class="col text-center">
                     <h2 class="text-center text-light">Channels</h2>
                     <div>
-                        {% include 'base/channel.html' %}
+                        <!-- {% include 'base/channel.html' %} -->
+                        <div class="text-center text-light">
+                            <h3></h3>
+                                {% for channel in channels %}
+                                <div>
+                                    <a href="{% url 'channel' channel.id %}">
+                                        <h3>{{channel.name}}</h3>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
                     </div>
                     <a href="{% url 'create-channel' %}">Create Channel</a>
                     <div class="p-5 text-light">
@@ -30,7 +40,7 @@
                     <h2 class="text-center text-light">{{room.name}}</h2>
                     <div class="p-3 text-light text-center">
                         <div class="container">
-                            {{room.description}}
+                            <h3>{{room.description}}</h3>
                         </div>
                         <hr>
                     </div>

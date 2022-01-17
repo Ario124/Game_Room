@@ -1,12 +1,18 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style>
+    .room-container{
+        display:grid;
+        grid-template-columns: 3fr 1fr;
+    } 
+</style>
 
 
-{% block content %}'
-
-<div class="text-center text-light">
-    <h2>channel page</h2>
-    {% for channel in channels %}
-    <h4>{{channel.name}}</h4>
-    {% endfor %}
+<div class="room-container">
+    <div>
+        <h2> Channel Name: {{channel.name}}</h2>
+    </div>
 </div>
-
-'{% endblock content %}'
+{% endblock %}
