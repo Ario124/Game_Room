@@ -5,8 +5,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.db.models import Q
-from .models import User, Room, Topic, Message, Channel
-from .forms import RoomForm, UserRegisterForm, ChannelForm
+from .models import User, Room, Topic, Message
+from .forms import RoomForm, UserRegisterForm
 
 # Create your views here.
 
@@ -22,16 +22,15 @@ def home(request):
         Q(description__icontains=q)
         )
 
-    topics = Topic.objects.all()
+    genre = Topic.objects.all()
     room_count = rooms.count()
     room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
 
-    context = {'rooms': rooms, 'topics': topics,
+    context = {'rooms': rooms, 'genre': genre,
                 'room_count': room_count, 'room_messages': room_messages}
     return render(request, 'base/home.html', context)
 
 def room(request, pk):
-    channels = Channel.objects.all()
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all().order_by('-created')
     participants = room.participants.all()
@@ -45,7 +44,7 @@ def room(request, pk):
         room.participants.add(request.user)
         return redirect('room', pk=room.id)
 
-    context = {'room':room, 'room_messages': room_messages, 'participants': participants, 'channels':channels}
+    context = {'room':room, 'room_messages': room_messages, 'participants': participants}
 
     return render(request, 'base/room.html', context)
 
@@ -56,15 +55,15 @@ def loginPage(request):
         return redirect('home')
 
     if request.method == 'POST':
-        email = request.POST.get('email').lower()
+        username = request.POST.get('username')
         password = request.POST.get('password')
 
         try:
-            user = User.objects.get(email=email)
+            user = User.objects.get(username=username)
         except:
             messages.error(request, 'User does not exist')
 
-        user = authenticate(request, email=email, password=password)
+        user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
@@ -113,7 +112,9 @@ def createRoom(request):
     if request.method == 'POST':
         form = RoomForm(request.POST)
         if form.is_valid():
-            form.save()
+            room = form.save(commit=False)
+            room.host = request.user
+            room.save()
             return redirect('home')
 
     context = {'form':form}
@@ -163,39 +164,3 @@ def deleteMessage(request, pk):
         return redirect('home')
     return render(request, 'base/delete.html', {'obj': message})
 
-
-
-
-
-
-
-
-def channel(request, pk):
-    channel = Channel.objects.get(id=pk)
-    all_channels = Channel.objects.all()
-
-    context = {'channel':channel, 'all_channels': all_channels}
-
-    return render(request, 'base/channel.html', context)
-
-
-
-
-# def channel(request, pk):
-#     channels = Channel.objects.get(id=pk)    
-#     context = {'channels': channels}
-
-#     return render(request, 'base/channel.html', context)
-
-
-def createChannel(request):
-    form = ChannelForm()
-
-    if request.method == 'POST':
-        form = ChannelForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    
-    context = {'form':form}
-    return render(request, 'base/channel_form.html', context)

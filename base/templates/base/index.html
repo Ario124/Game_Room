@@ -1,9 +1,3 @@
-{% extends 'main.html' %}
-
-{% block content %}
-
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,14 +6,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/static/styles/styles.css" rel="stylesheet" />
+        <title>Dashboard - SB Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="{% static 'styles/styles.css' %}" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-    <body class="sb-nav-fixed bg-secondary">
+    <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Game Room</a>
+            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -47,10 +42,11 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Genre</div>
-                            {% for g in genre %}
-                            <a class="nav-link" href="index.html"><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>{{g.name}}</a>
-                            {% endfor %}
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -112,58 +108,12 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content">
-                <br>
                 <main>
                     <div class="container-fluid px-4">
-
-                        <div class="row">
-                            <div class="col-xl-8">
-                                <div class="bg-dark text-light card mb-4">
-                                    <h2 class="text-center">Rooms</h2>
-                                    <div class="card-header">
-                                        <i class="fas fa-dice-d6 me-1"></i>
-                                        Game Rooms Available
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="10"></canvas>
-                                    
-                                        {% for room in rooms %}
-                                            <div class="bg-secondary card mb-4">
-                                                <div class="card-header">
-                                                    <h4>{{room.name}}</h4>
-                                                    <hr>
-                                                    <div class="card-body">
-                                                        <p>{{room.description}}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-xl-4">
-                                <div class="bg-dark text-light card mb-4">
-                                    <h2 class="text-center">Activity</h2>
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Latest Activity
-                                    </div>
-                                    <div class="bg-dark card-body"><canvas id="myBarChart" width="100%" height="10"></canvas>
-                                    
-                                        <div class="bg-secondary card">
-                                            <div class="card-header">
-                                                <div class="card-body">
-                                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque repellendus ea recusandae ut, iusto quidem culpa. Aspernatur possimus debitis saepe. Ea sequi, eius ipsa reprehenderit voluptate sapiente excepturi aspernatur doloribus incidunt mollitia exercitationem!</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
+                        <h1 class="mt-4">Dashboard</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
@@ -729,10 +679,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="{% static 'js/scripts.js' % }"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
-        <script src="{% static 'js/demo/chart-bar-demo.js' %}"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="{% static 'js/datatables-simple-demo.js' % }"></script>
     </body>
 </html>
-{% endblock %}
