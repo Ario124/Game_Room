@@ -144,7 +144,7 @@ cython_debug/
 
 
 # Bootstrap CSS
-.static/styles/
+*styles/
 
 
 # End of https://www.toptal.com/developers/gitignore/api/python
