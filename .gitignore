@@ -143,8 +143,5 @@ dmypy.json
 cython_debug/
 
 
-# Bootstrap CSS!!
-**/styles
-
 
 # End of https://www.toptal.com/developers/gitignore/api/python
