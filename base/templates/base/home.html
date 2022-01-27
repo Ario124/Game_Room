@@ -16,7 +16,7 @@
     <body class="sb-nav-fixed bg-secondary">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Game Room</a>
+            <a class="navbar-brand ps-3 game-room-title" href="#">Game Room</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -31,10 +31,14 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="#!">Profile</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
                     </ul>
                 </li>
             </ul>
@@ -44,6 +48,8 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
+                            <br>
+                            <a href="/"><button class="bn632-hover bn22">Create Room</button></a>
                             <div class="sb-sidenav-menu-heading">Genre</div>
                             {% for g in genre %}
                             <a class="nav-link" href="index.html"><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>{{g.name}}</a>
@@ -102,10 +108,14 @@
                             </a>
                         </div>
                     </div>
+                    {% if request.user.is_authenticated %}
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        <div class="medium">Logged in as:</div>
+                        <br>
+                        <p class="h4 text-light">{{request.user.username}}</p>
+                        <hr>
                     </div>
+                    {% endif %}
                 </nav>
             </div>
             <div id="layoutSidenav_content">
@@ -116,7 +126,7 @@
                         <div class="row">
                             <div class="col-xl-8">
                                 <div class="bg-dark text-light card mb-4">
-                                    <h2 class="text-center">Rooms</h2>
+                                    <h3 class="text-center">Rooms</h3>
                                     <div class="card-header">
                                         <i class="fas fa-dice-d6 me-1"></i>
                                         Game Rooms Available
@@ -126,10 +136,17 @@
                                         {% for room in rooms %}
                                             <div class="bg-secondary card mb-4">
                                                 <div class="card-header">
-                                                    <h4>{{room.name}}</h4>
-                                                    <hr>
-                                                    <div class="card-body">
-                                                        <p>{{room.description}}</p>
+                                                    <div class="row">
+                                                        <div class="col-10">
+                                                            <h4>{{room.name}}</h4>
+                                                        </div>
+                                                        <div class="col-2">
+                                                            {{room.topic}}
+                                                        </div>
+                                                        <hr>
+                                                        <div class="card-body">
+                                                            <p>{{room.description}}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -140,7 +157,7 @@
                             
                             <div class="col-xl-4">
                                 <div class="bg-dark text-light card mb-4">
-                                    <h2 class="text-center">Activity</h2>
+                                    <h3 class="text-center">Activity</h3>
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
                                         Latest Activity

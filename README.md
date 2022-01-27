@@ -40,11 +40,14 @@ Once inside the Game_Room folder
 
 * Open .env and put the secret key like in this example: 
 `SECRET_KEY=60e162937ce271c25fed969153b9dbb6085ba44315cb4c`
-    You can generate a key using terminal: `python -c 'import secrets; print(secrets.token_hex(75))'`
+
+* You can generate a key using terminal: 
+ `python -c 'import secrets; print(secrets.token_hex(75))'`
 
 * Migrate using: `python manage.py migrate`
 
-If everything went according to the instructions without major problems you should be able to run the application using: `python manage.py runserver`
+If everything went according to the instructions without major problems you should be able to run the application using: 
+`python manage.py runserver`
 
 
 
