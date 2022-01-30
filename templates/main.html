@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
     <title>Game Room</title>
 </head>
-<body>
-    <!-- {% include 'navbar.html' %} -->
+<body class="sb-nav-fixed bg-secondary">
+    {% include 'navbar.html' %}
+    {% include 'sidebar.html' %}
+    
+
 
     {% if messages %}
     <ul class="messages">

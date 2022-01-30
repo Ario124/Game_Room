@@ -31,6 +31,7 @@ def home(request):
     return render(request, 'base/home.html', context)
 
 def room(request, pk):
+    genre = Topic.objects.all()
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all().order_by('-created')
     participants = room.participants.all()
@@ -44,7 +45,7 @@ def room(request, pk):
         room.participants.add(request.user)
         return redirect('room', pk=room.id)
 
-    context = {'room':room, 'room_messages': room_messages, 'participants': participants}
+    context = {'room':room, 'room_messages': room_messages, 'participants': participants, 'genre': genre}
 
     return render(request, 'base/room.html', context)
 

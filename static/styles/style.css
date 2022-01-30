@@ -275,3 +275,17 @@ body {
   box-shadow: 0 3px 15px 0 rgba(23, 168, 108, 0.75);
 }
 
+.btn_home {
+  text-decoration: none;
+  color:rgba(255, 255, 255, 0.25);
+}
+
+.btn_home:hover {
+  color: #fff;
+}
+
+
+.btn_back_home {
+  color: #fff;
+  text-decoration: none;
+}
