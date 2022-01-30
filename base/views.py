@@ -108,7 +108,7 @@ def userProfile(request, pk):
 
 @login_required(login_url='login')
 def createRoom(request):
-
+    genre = Topic.objects.all()
     form = RoomForm()
     if request.method == 'POST':
         form = RoomForm(request.POST)
@@ -118,7 +118,7 @@ def createRoom(request):
             room.save()
             return redirect('home')
 
-    context = {'form':form}
+    context = {'form':form, 'genre': genre}
     return render(request, 'base/room_form.html', context)
 
 
