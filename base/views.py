@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.db.models import Q
-from .models import User, Room, Topic, Message
+from .models import User, Room, Topic, Message, State
 from .forms import RoomForm, UserRegisterForm
 
 # Create your views here.
@@ -108,17 +108,24 @@ def userProfile(request, pk):
 
 @login_required(login_url='login')
 def createRoom(request):
-    genre = Topic.objects.all()
+    genres = Topic.objects.all()
+    state = State.objects.all()
     form = RoomForm()
-    if request.method == 'POST':
-        form = RoomForm(request.POST)
-        if form.is_valid():
-            room = form.save(commit=False)
-            room.host = request.user
-            room.save()
-            return redirect('home')
 
-    context = {'form':form, 'genre': genre}
+    if request.method == 'POST':
+        genre_name = request.POST.get('genre')
+        genre, created = Topic.objects.get_or_create(name=genre_name)
+
+        Room.objects.create(
+            host = request.user,
+            topic = genre,
+            name = request.POST.get('name'),
+            description = request.POST.get('description')
+        )
+        return redirect('home')
+
+
+    context = {'form':form, 'genre': genres, 'state':state}
     return render(request, 'base/room_form.html', context)
 
 

@@ -11,6 +11,8 @@
                         <h3 class="text-center">{{room.name}}</h3>
                         <div class="card-header">
                             <a class="btn_home" href="{% url 'home' %}"><i class="fas fa-angle-left"> </i> Game Rooms</a>
+                            <h2>WIP -- Edit here</h2>
+                            <a href="{% url 'update-room' room.id %}">Edit</a>
                         </div>
                         <div class="card-body"><canvas id="myAreaChart" width="100%" height="10"></canvas>
                         
@@ -47,10 +49,10 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-4">
-                                                    Information: 
+                                                    State: 
                                                 </div>
                                                 <div class="col-4 text-center">
-                                                    Information goes here...
+                                                    {{room.state}}
                                                 </div>
                                             </div>
                                             
