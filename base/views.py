@@ -108,24 +108,32 @@ def userProfile(request, pk):
 
 @login_required(login_url='login')
 def createRoom(request):
-    genres = Topic.objects.all()
+    genre = Topic.objects.all()
     state = State.objects.all()
     form = RoomForm()
 
     if request.method == 'POST':
+
+        state_name = request.POST['state']
+        state = State.objects.get(name=state_name)
+
         genre_name = request.POST.get('genre')
-        genre, created = Topic.objects.get_or_create(name=genre_name)
+        genre = Topic.objects.get(name=genre_name)
+
 
         Room.objects.create(
             host = request.user,
             topic = genre,
+            state = state,
             name = request.POST.get('name'),
             description = request.POST.get('description')
         )
+
+
         return redirect('home')
 
 
-    context = {'form':form, 'genre': genres, 'state':state}
+    context = {'form':form, 'genre': genre, 'state': state}
     return render(request, 'base/room_form.html', context)
 
 
