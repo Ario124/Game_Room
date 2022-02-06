@@ -110,7 +110,6 @@ def userProfile(request, pk):
 def createRoom(request):
     genre = Topic.objects.all()
     state = State.objects.all()
-    form = RoomForm()
 
     if request.method == 'POST':
 
@@ -133,7 +132,7 @@ def createRoom(request):
         return redirect('home')
 
 
-    context = {'form':form, 'genre': genre, 'state': state}
+    context = {'genre': genre, 'state': state}
     return render(request, 'base/room_form.html', context)
 
 

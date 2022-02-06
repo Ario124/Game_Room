@@ -275,12 +275,12 @@ body {
   box-shadow: 0 3px 15px 0 rgba(23, 168, 108, 0.75);
 }
 
-.btn_home {
+.btn_home, .btn_edit {
   text-decoration: none;
   color: #fff;
 }
 
-.btn_home:hover {
+.btn_home:hover, .btn_edit:hover {
   color: rgba(37, 247, 103, 0.9);
 }
 
