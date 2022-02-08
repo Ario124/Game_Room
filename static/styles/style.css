@@ -275,12 +275,12 @@ body {
   box-shadow: 0 3px 15px 0 rgba(23, 168, 108, 0.75);
 }
 
-.btn_home, .btn_edit {
+.btn_home, .btn_edit, .link_host {
   text-decoration: none;
   color: #fff;
 }
 
-.btn_home:hover, .btn_edit:hover {
+.btn_home:hover, .btn_edit:hover, hr {
   color: rgba(37, 247, 103, 0.9);
 }
 
@@ -311,4 +311,10 @@ body {
 
 .text-green {
   color: rgba(37, 247, 103, 0.9);
+}
+
+
+.link_host:hover {
+  color: rgba(37, 247, 103, 0.9);
+  font-weight: 500;
 }
