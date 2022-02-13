@@ -71,25 +71,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-xl-4">
-                            <div class="bg-dark text-light card mb-4">
-                                <h3 class="text-center">Activity</h3>
-                                <div class="card-header">
-                                    <i class="fas fa-chart-bar me-1"></i>
-                                    Latest Activity
-                                </div>
-                                <div class="bg-dark card-body"><canvas id="myBarChart" width="100%" height="10"></canvas>
-                                
-                                    <div class="bg-secondary card">
-                                        <div class="card-header">
-                                            <div class="card-body">
-                                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque repellendus ea recusandae ut, iusto quidem culpa. Aspernatur possimus debitis saepe. Ea sequi, eius ipsa reprehenderit voluptate sapiente excepturi aspernatur doloribus incidunt mollitia exercitationem!</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% include 'base/activity_component.html' %}
                     </div>
 
                     <div class="row">
