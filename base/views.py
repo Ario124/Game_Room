@@ -140,17 +140,20 @@ def createRoom(request):
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
+    genre = Topic.objects.all()
 
     if request.user != room.host:
         return HttpResponse('You are not allowed here.')
 
     if request.method == 'POST':
-        form = RoomForm(request.POST, instance=room)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
+        genre_name = request.POST.get('genre')
+        room.name = request.POST.get('name')
+        room.genre = genre_name
+        room.description = request.POST.get('description')
+        room.save()
+        return redirect('home')
 
-    context = {'form': form}
+    context = {'form': form, 'genres': genre, 'room': room}
     return render(request, 'base/room_form.html', context)
 
 
