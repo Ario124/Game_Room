@@ -135,25 +135,33 @@ def createRoom(request):
     context = {'genre': genre, 'state': state}
     return render(request, 'base/room_form.html', context)
 
-
+### Need to fix Genre/State not saving properly after edit.
 @login_required(login_url='login')
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
     genre = Topic.objects.all()
+    state = State.objects.all()
 
     if request.user != room.host:
         return HttpResponse('You are not allowed here.')
 
     if request.method == 'POST':
+
+        state_name = request.POST['state']
+        state = State.objects.get(name=state_name)
+
         genre_name = request.POST.get('genre')
+        genre = Topic.objects.get(name=genre_name)
+
+        room.state = state
+        room.genre = genre
         room.name = request.POST.get('name')
-        room.genre = genre_name
         room.description = request.POST.get('description')
         room.save()
         return redirect('home')
 
-    context = {'form': form, 'genres': genre, 'room': room}
+    context = {'form': form, 'genre': genre, 'room': room, 'state':state}
     return render(request, 'base/room_form.html', context)
 
 
