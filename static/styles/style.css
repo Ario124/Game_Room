@@ -233,6 +233,33 @@ body {
 .bg-create-room {
   background-color: #343a40;
 }
+
+.bn633-hover {
+  width: 90px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  height: 30px;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.bn63-hover:hover {
+  background-position: 100% 0;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  border: solid 1px;
+}
+
 .bn632-hover {
   width: 130px;
   font-size: 16px;
@@ -251,7 +278,7 @@ body {
   transition: all .4s ease-in-out;
 }
 
-.bn632-hover:hover {
+.bn632-hover:hover, .bn633-hover:hover {
   background-position: 100% 0;
   moz-transition: all .4s ease-in-out;
   -o-transition: all .4s ease-in-out;
@@ -264,7 +291,7 @@ body {
   outline: none;
 }
 
-.bn632-hover.bn22 {
+.bn632-hover.bn22, .bn633-hover.bn22 {
   background-image: linear-gradient(
     to right,
     #0ba360,
@@ -317,4 +344,24 @@ body {
 .link_host:hover {
   color: rgba(37, 247, 103, 0.9);
   font-weight: 500;
+}
+
+
+.sign-up {
+  color: rgba(37, 247, 103, 0.9);
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		color: rgba(5, 168, 87, 0.6);
+	}
+
+	70% {
+		color:rgba(37, 247, 103, 0.9);
+	}
+
+	100% {
+		color:rgba(37, 247, 103, 10.9);
+	}
 }

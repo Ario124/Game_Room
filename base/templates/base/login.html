@@ -6,9 +6,9 @@
     <main>
         <div class="container-fluid px-4">
             <div class="row">
-                <div class="col-xl-8">
+                <div class="col-xl-8 text-center">
                     <div class="bg-dark text-white card mb-4">
-                        <h3 class="text-center">{{room.name}}</h3>
+                        <h3 class="text-center">Login</h3>
                         <div class="card-header">
                             <div class="d-flex justify-content-between">
                                 <div class=""><a class="btn_home" href="{% url 'home' %}"><i class="fas fa-angle-left"> </i> Home</a></div>
@@ -21,26 +21,39 @@
                             <div class="bg-dark card mb-4">
                                 <div class="card-header">
                                     <div class="col-lg-10">
-                                        <h4>Login</h4>
+                                        <h4></h4>
                                     </div>
                                         <span class="badge bg-success">{{room.topic}}</span>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-lg-4 mb-3">
+                                            <div class="col-lg-4 offset-4 mb-3">
                                                 {% if page == 'login' %}
                                                 <form method="POST" action="">
                                                     {% csrf_token %}
-                                            
-                                                    <label>Username:</label>
-                                                    <input type="text" name="username" placeholder="Enter Username" />
-                                            
-                                                    <label>Password:</label>
-                                                    <input type="password" name="password" placeholder="Enter Password" />
-                                            
-                                                    <input type="submit" value="Login" />
+                                                    
+                                                    <div class="class-form-group p-3 text-warning">
+                                                        {% if messages %}
+                                                        {% for message in messages %}
+                                                            <b>{{message}}</b>
+                                                            <br>
+                                                        {% endfor %}
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="form-group p-3">
+                                                        <label class="mb-3">Username:</label>
+                                                        <input type="text" class="form-control" name="username" placeholder="Enter Username">
+                                                    </div>
+                                                    <div class="form-group p-3">
+                                                        <label class="mb-3">Password:</label>
+                                                        <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                                                        <br>
+                                                        <button type="submit" class="bn633-hover bn22">Login</button>
+                                                        <hr>
+                                                        <p>Havent signed up yet?</p>
+                                                        <a class="sign-up" href="{% url 'register' %}">Sign up</a>
+                                                    </div>
                                                 </form>
-                                                <p>Havent signed up yet?</p>
-                                                <a href="{% url 'register' %}">Sign up</a>
                                                 {% else %}
                                                 <form method="POST" action="">
                                                     {% csrf_token %}
