@@ -1,6 +1,10 @@
 <div class="col-xl-4">
     <div class="bg-dark text-light card mb-4">
+        {% if page == 'room' %}
+        <h3 class="text-center">Room Activity</h3>
+        {% else %}
         <h3 class="text-center">Activity</h3>
+        {% endif %}
         <div class="card-header">
             <i class="fas fa-chart-bar me-1"></i>
             Latest Activity

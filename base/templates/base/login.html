@@ -1,38 +1,86 @@
 {% extends 'main.html' %}
 
 {% block content %}
+<div id="layoutSidenav_content">
+    <br>
+    <main>
+        <div class="container-fluid px-4">
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="bg-dark text-white card mb-4">
+                        <h3 class="text-center">{{room.name}}</h3>
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between">
+                                <div class=""><a class="btn_home" href="{% url 'home' %}"><i class="fas fa-angle-left"> </i> Home</a></div>
+                                {% if room.host == request.user %}
+                                <div class=""><a class="btn_edit" href="{% url 'update-room' room.id %}">Edit Room <i class="fa fa-edit"></i></a></div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="card-body"><canvas id="myAreaChart" width="100%" height="10"></canvas>
+                            <div class="bg-dark card mb-4">
+                                <div class="card-header">
+                                    <div class="col-lg-10">
+                                        <h4>Login</h4>
+                                    </div>
+                                        <span class="badge bg-success">{{room.topic}}</span>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-lg-4 mb-3">
+                                                {% if page == 'login' %}
+                                                <form method="POST" action="">
+                                                    {% csrf_token %}
+                                            
+                                                    <label>Username:</label>
+                                                    <input type="text" name="username" placeholder="Enter Username" />
+                                            
+                                                    <label>Password:</label>
+                                                    <input type="password" name="password" placeholder="Enter Password" />
+                                            
+                                                    <input type="submit" value="Login" />
+                                                </form>
+                                                <p>Havent signed up yet?</p>
+                                                <a href="{% url 'register' %}">Sign up</a>
+                                                {% else %}
+                                                <form method="POST" action="">
+                                                    {% csrf_token %}
+                                                    {{form.as_p}}
+                                                    <input type="submit" value="Register" />
+                                                </form>
+                                                <p>Already signed up yet?</p>
+                                                <a href="{% url 'login' %}">Login</a>
 
+                                                {% endif %}
+                                                
+                                            </div>
+                                            <div class="col-lg-4 mb-3 d-flex justify-content-center">
+                                                {{room.description}}
+                                            </div>
+                                            <hr>
+                                            
+                                        </div> 
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                </div>
+                
+                {% include 'base/activity_component.html' %}
+            </div>
 
-{% if page == 'login' %}
-<hr>
-<div>
-    <form method="POST" action="">
-        {% csrf_token %}
-
-        <label>Username:</label>
-        <input type="text" name="username" placeholder="Enter Username" />
-
-        <label>Password:</label>
-        <input type="password" name="password" placeholder="Enter Password" />
-
-        <input type="submit" value="Login" />
-    </form>
-
-    <p>Havent signed up yet?</p>
-    <a href="{% url 'register' %}">Sign up</a>
+        </div>
+    </main>
+    <footer class="py-4 bg-dark mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Game Room 2022 - Created by Patrik Solis</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
-
-{% else %}
-<hr>
-<div>
-    <form method="POST" action="">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Register" />
-    </form>
-    <p>Already signed up yet?</p>
-    <a href="{% url 'login' %}">Login</a>
-</div>
-{% endif %}
-
-{% endblock content %}
+{% endblock %}

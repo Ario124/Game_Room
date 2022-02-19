@@ -31,6 +31,7 @@ def home(request):
     return render(request, 'base/home.html', context)
 
 def room(request, pk):
+    page = 'room'
     genre = Topic.objects.all()
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all().order_by('-created')
@@ -45,12 +46,16 @@ def room(request, pk):
         room.participants.add(request.user)
         return redirect('room', pk=room.id)
 
-    context = {'room':room, 'room_messages': room_messages, 'participants': participants, 'genre': genre}
+    context = {'page': page, 'room':room, 'room_messages': room_messages, 'participants': participants, 'genre': genre}
 
     return render(request, 'base/room.html', context)
 
 def loginPage(request):
     page = 'login'
+    
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    genre = Topic.objects.all()
+    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
 
     if request.user.is_authenticated:
         return redirect('home')
@@ -72,7 +77,7 @@ def loginPage(request):
         else:
             messages.error(request, 'Username OR password does not exist')
 
-    context = {'page': page}
+    context = {'page': page, 'genre': genre, 'room_messages': room_messages}
     return render(request, 'base/login.html', context)
 
 def logoutPage(request):
