@@ -10,10 +10,12 @@
                     <div class="bg-dark text-white card mb-4">
                         <h3 class="text-center">{{room.name}}</h3>
                         <div class="card-header">
+                            <hr>
                             <div class="d-flex justify-content-between">
-                                <div class=""><a class="btn_home" href="{% url 'home' %}"><i class="fas fa-angle-left"> </i> Game Rooms</a></div>
+                                <div class=""><a class="btn_home" href="{% url 'home' %}"><i class="fas fa-angle-left text-secondary"> </i> Game Rooms</a><hr></div>
                                 {% if room.host == request.user %}
-                                <div class=""><a class="btn_edit" href="{% url 'update-room' room.id %}">Edit Room <i class="fa fa-edit"></i></a></div>
+                                <div class=""><a class="btn_edit" href="{% url 'update-room' room.id %}">Edit Room <i class="fa fa-edit text-secondary"></i><hr></a></div>
+                                <div class=""><a class="btn_edit" href="{% url 'delete-room' room.id %}">Delete Room <i class="fa fa-trash text-secondary"></i><hr></a></div>
                                 {% endif %}
                             </div>
                         </div>
