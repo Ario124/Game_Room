@@ -85,6 +85,11 @@ def logoutPage(request):
     return redirect('home')
 
 def registerPage(request):
+
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    genre = Topic.objects.all()
+    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
+
     form = UserRegisterForm()
 
     if request.method == 'POST':
@@ -98,7 +103,8 @@ def registerPage(request):
         else:
             messages.error(request, 'An error occurred during registration')
 
-    return render(request, 'base/login.html', {'form': form})
+    context = {'form': form, 'genre': genre, 'room_messages': room_messages}
+    return render(request, 'base/login.html', context)
 
 
 
