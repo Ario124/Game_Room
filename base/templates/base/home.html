@@ -46,6 +46,7 @@
                                                             <h4>{{room.name}}</h4>
                                                         </div>
                                                 </a>
+                                                <p>@<a class="link_host" href="{% url 'user-profile' room.host.id %}">{{room.host}}</a></p>
                                                         <div class="">
                                                             <span class="badge bg-success">{{room.topic}}</span>
                                                             <hr>

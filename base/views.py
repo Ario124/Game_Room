@@ -178,6 +178,7 @@ def updateRoom(request, pk):
 
 @login_required(login_url='login')
 def deleteRoom(request, pk):
+    page = 'delete-room'
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     genre = Topic.objects.all()
     room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
@@ -190,7 +191,7 @@ def deleteRoom(request, pk):
     if request.method == 'POST':
         room.delete()
         return redirect('home')
-    context = {'obj': room, 'genre': genre, 'room_messages': room_messages}
+    context = {'obj': room, 'genre': genre, 'room_messages': room_messages, 'page': page}
     return render(request, 'base/delete.html', context)
 
 
