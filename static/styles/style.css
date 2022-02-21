@@ -321,12 +321,20 @@ body {
   background-color: rgb(77, 80, 87);
 }
 
+.bg-activity {
+  background-color: rgb(40, 40, 40);
+}
+
 .bg-card {
   background-color: rgb(77, 161, 103);
 }
 
 .bg-card-head {
   background-color: rgb(33, 78, 54);
+}
+
+.bg-dark2 {
+  background-color: #242629;
 }
 
 

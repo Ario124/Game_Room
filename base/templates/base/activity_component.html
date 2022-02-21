@@ -17,16 +17,25 @@
                             {% for message in room_messages %}
                             <div class="bg-dark card border-success mb-3">
                                 <div class="card-header bg-dark border-success">
-                                    <h5>{{message.room}}</h5>
+                                    <div class="row">
+                                        <div class="col-lg-11">
+                                            <p>@<a class="link_host" href="{% url 'user-profile' message.user.id %}">{{message.room.host}}</a></p>
+                                        </div>
+                                        {% if message.room.host == request.user %}
+                                        <div class="col-lg-1">
+                                            <div class=""><a class="btn_edit" href="{% url 'delete-message' message.id %}"><i class="fa fa-trash text-secondary"></i></a></div>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    <p>Replied to: <span class="text-success">{{message.room}}</span></p>
+                                    <p class="text-muted">{{message.created|timesince}} ago.</p>
                                 </div>
-                                <div class="card-body text-success">
-                                  <p class="card-text">{{message.body}}</p>
+                                <div class="card-body bg-activity text-white">
+                                  <p class="card-text">"{{message.body}}"</p>
                                 </div>
                                 <div class="card-footer bg-dark border-success">
-                                    <p>@<a class="link_host" href="{% url 'user-profile' message.user.id %}">{{message.room.host}}</a></p>
-                                    <p>Replied: {{message.created|timesince}} ago.</p>
-                                    <div class=""><a class="btn_edit" href="{% url 'delete-message' message.id %}">Delete Message <i class="fa fa-trash text-secondary"></i><hr></a></div>
                                 </div>
+                                <br>
                               </div>
                              {% endfor %}
                         </div>

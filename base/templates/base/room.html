@@ -58,6 +58,30 @@
                                                 <p>Host: <a class="link_host" href="{% url 'user-profile' room.host.id %}">{{room.host}}</a></p>
                                             </div>  
                                     </div>
+                                    <div class="card-header">
+                                        <div class="container bg-dark pt-3 text-white mt-5 rounded shadow">
+  
+                                            <div class="row px-4">
+                                              <div class="col-8 p-0">
+                                                <h2><i class="fas fa-comment-dots"></i> Chat</h2>
+                                              </div>
+                                              <hr class="col-12 mb-0">
+                                            </div>
+                                            
+                            
+                                            <div id="chat-wrapper" class="row px-4 pb-4 d-flex flex-column-reverse flex-nowrap">
+                                              <input disabled class="chat-left message col-8 mt-3 rounded rounded-pill rounded-lg border-0 shadow bg-white text-dark p-3 pl-4" value="Hello, what's up?">
+                                            </div>
+                                          
+                                            <div class="row px-4 pt-4 rounded-bottom">
+                                          
+                                              <input id="interface" type="text" class="col rounded rounded-pill bg-light p-3 text-left border-0" placeholder=" Write your message...">
+                                                <input style="display:none;" class="chat-right message col-8 offset-4 mt-3 rounded rounded-pill rounded-lg border shadow  bg-info text-white p-3 pl-4" value="Hello, what's up?">
+                                            </div>
+                                            <hr>
+                                            <br>
+                                          </div>
+                                    </div>
                                 </div>
                         </div>
                     </div>
@@ -65,7 +89,8 @@
                 
                 {% include 'base/activity_component.html' %}
             </div>
-
+              
+              
             <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
@@ -73,7 +98,7 @@
                         <div>
                             <form method="POST" action="">
                                 {% csrf_token %}
-                                <input type="text" name="body" placeholder="Message goes here...">
+                                <input class="rounded rounded-pill rounded-lg border" type="text" name="body" placeholder="Message goes here...">
                             </form>
                         </div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
