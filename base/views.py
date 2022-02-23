@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.db.models import Q
 from .models import User, Room, Topic, Message, State
 from .forms import RoomForm, UserRegisterForm
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -22,12 +23,16 @@ def home(request):
         Q(description__icontains=q)
         )
 
+    p = Paginator(Room.objects.all(), 2)
+    page = request.GET.get('page')
+    room_pages = p.get_page(page)
+
     genre = Topic.objects.all()
     room_count = rooms.count()
-    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
+    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))[0:3]
 
     context = {'rooms': rooms, 'genre': genre,
-                'room_count': room_count, 'room_messages': room_messages}
+                'room_count': room_count, 'room_messages': room_messages, 'room_pages': room_pages}
     return render(request, 'base/home.html', context)
 
 def room(request, pk):
