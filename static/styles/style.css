@@ -372,3 +372,18 @@ body {
 		color:rgba(37, 247, 103, 10.9);
 	}
 }
+
+.form-control {
+  color:white;
+  border: 1px solid #198754;
+  background-color:rgba(146, 143, 143, 0.178);
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: none;
+  border: 1px solid #198754;
+  background-color:rgba(146, 143, 143, 0.178);
+  color: white;
+  box-shadow: 0px 0px 10px 1px rgba(5, 168, 87, 0.6);
+}
