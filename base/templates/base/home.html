@@ -1,111 +1,78 @@
 {% extends 'main.html' %}
 
 {% block content %}
-
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-    </head>
-
+<div id="layoutSidenav_content">
+    <br>
     <main>
-        <div id="layoutSidenav_content">
-            <br>
-            <main>
-                <div class="container-fluid px-4">
-
-                    <div class="row">
-                        <div class="col-xl-8">
-                            <div class="bg-dark text-white card mb-4">
-                                <h3 class="text-center">Rooms</h3>
-                                <div class="card-header">
-                                    <i class="fas fa-dice-d6 me-1"></i>
+        <div class="container-fluid px-4">
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="bg-dark text-white card mb-4">
+                        <h3 class="text-center">Rooms</h3>
+                        <div class="card-header">
+                            <i class="fas fa-dice-d6 me-1"></i>
+                            <span>
+                                Game Rooms Available: 
+                                <span class="text-green">
+                                    <b>
+                                    {{room_count}}
+                                    </b>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="card-body2"><canvas id="myAreaChart" width="100%" height="10"></canvas>
+                            {% for room in page %}
+                            <div class="game-card {% cycle 'bg-dark' 'bg-dark2' %} card mb-4">
+                                    <div class="card-header">
+                                        <div class="col-lg-10">
+                                            <h4>{{room.name}}</h4>
+                                            <p>@<a class="link_host" href="{% url 'user-profile' room.host.id %}">{{room.host}}</a></p>
+                                        </div>
+                                            <span class="badge bg-success">{{room.topic}}</span>
+                                            <hr>
+                                            <div class="text-muted">
+                                                Created: {{room.created|timesince}} ago
+                                              </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <div>
                                     <span>
-                                        Game Rooms Available: 
-                                        <span class="text-green">
-                                            <b>
-                                            {{room_count}}
-                                            </b>
+                                        {% if page_obj.has_previous %}
+                                            <a href="?page=1">&laquo; First</a>
+                                            <a href="?page={{page.previous_page_number}}">Previous</a>
+                                        {% endif %}
+
+                                        <span>
+                                            Page {{page.number}} of {{page.paginator.num_pages}}
                                         </span>
+
+                                        {% if page.has_next %}
+                                        <a href="?page={{page.next_page_number}}">Next</a>
+                                        <a href="?page={{page.paginator.num_pages}}">&raquo; Last</a>
+                                       {% endif %}
                                     </span>
                                 </div>
-                                <div class="card-body2"><canvas id="myAreaChart" width="100%" height="10"></canvas>
-                                
-                                    {% for room in page %}
-                                        <div class="game-card {% cycle 'bg-dark' 'bg-dark2' %} card mb-4">
-                                            <div class="card-header">
-                                                <a class="btn_home" href="{%  url 'room' room.id %}">
-                                                    <div class="row">
-                                                        <div class="col-lg-10">
-                                                            <h4>{{room.name}}</h4>
-                                                        </div>
-                                                </a>
-                                                <p>@<a class="link_host" href="{% url 'user-profile' room.host.id %}">{{room.host}}</a></p>
-                                                        <div class="">
-                                                            <span class="badge bg-success">{{room.topic}}</span>
-                                                            <hr>
-                                                        </div>
-                                                        <div class="container">
-                                                            <div class="row">
-                                                              <div class="col">
-                                                                
-                                                              </div>
-                                                              <div class="col-md-auto text-muted">
-                                                                Created: {{room.created|timesince}} ago
-                                                              </div>
-                                                            </div>
-                                                          </div> 
-                                            </div>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-                                    <div>
-                                        <span>
-                                            {% if page_obj.has_previous %}
-                                                <a href="?page=1">&laquo; First</a>
-                                                <a href="?page={{page.previous_page_number}}">Previous</a>
-                                            {% endif %}
-    
-                                            <span>
-                                                Page {{page.number}} of {{page.paginator.num_pages}}
-                                            </span>
-    
-                                            {% if page.has_next %}
-                                            <a href="?page={{page.next_page_number}}">Next</a>
-                                            <a href="?page={{page.paginator.num_pages}}">&raquo; Last</a>
-                                           {% endif %}
-                                        </span>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {% include 'base/activity_component.html' %}
-                    </div>
-
-                </div>
-            </main>
-            <footer class="py-4 bg-dark mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Game Room 2022 - Created by Patrik Solis</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
                         </div>
                     </div>
                 </div>
-            </footer>
+                
+                {% include 'base/activity_component.html' %}
+            </div>
+              
         </div>
     </main>
-
-</html>
+    <footer class="py-4 bg-dark mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Game Room 2022 - Created by Patrik Solis</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
 {% endblock %}
