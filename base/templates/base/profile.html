@@ -11,16 +11,40 @@
                         <div class="card-body"><canvas id="myAreaChart" width="100%" height="10"></canvas>
                                 <div class="bg-dark card mb-4">
                                     <div class="card-header">
-                                        <div class="col-lg-10">
-                                            <h4>Profile for: {{user.username}}</h4>
-                                            <p>Profile id: {{user.id}}</p>
+                                        <div class="text-center">
+                                            <h4>{{user.username}}</h4>
                                         </div>
-                                        <div>
-                                            {% include 'base/feed_component.html' %}
-                                        </div>
- 
                                     </div>
                                 </div>
+                        </div>
+                        <div class="card-header">
+                            <div class="col-lg-10">
+                                <h4>{{room.name}}</h4>
+                            </div>
+                                <span class="badge bg-success">{{room.topic}}</span>
+                                <div class="row">
+                                    <div class="col-lg-4 mb-3">
+                                        About: {{user.about_me}}
+                                        
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="card-header">
+                            <div class="container bg-dark2 pt-3 text-white mt-5 rounded shadow">
+
+                                <div class="row px-4">
+                                  <div class="p-0 text-center">
+                                    <h4>User Activity</h4>
+                                    <div>
+                                        <br>
+                                        {% include 'base/feed_component.html' %}
+                                    </div>
+                                  </div>
+                                  <br>
+                                </div>
+                              <br>
+                              <br>
+                              </div>
                         </div>
                     </div>
                 </div>
