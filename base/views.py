@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.db.models import Q
 from .models import User, Room, Topic, Message, State
-from .forms import RoomForm, UserRegisterForm
+from .forms import RoomForm, UserRegisterForm, UserForm
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -213,3 +213,17 @@ def deleteMessage(request, pk):
         return redirect('home')
     return render(request, 'base/delete.html', {'obj': message})
 
+
+@login_required(login_url='login')
+def updateProfile(request, pk):
+    about_me = User.objects.all()
+    user = User.objects.get(id=pk)
+
+    if request.method == 'POST':
+        about_me = request.POST.get('about_me')
+        user.about_me = about_me
+        user.save()
+        return redirect('home')
+
+    context = {'about_me': about_me}
+    return render(request, 'base/update_profile.html', context)

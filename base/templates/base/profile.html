@@ -13,6 +13,9 @@
                                     <div class="card-header">
                                         <div class="text-center">
                                             <h4>{{user.username}}</h4>
+                                            {% if request.user == user %}
+                                            <a href="{% url 'update-profile' user.id %}">Edit Profile</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
