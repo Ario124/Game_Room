@@ -17,6 +17,11 @@
                                             <a href="{% url 'update-profile' user.id %}">Edit Profile</a>
                                             {% endif %}
                                         </div>
+                                        <div class="profile__avatar">
+                                            <div class="avatar avatar--large active">
+                                              <img src="{{user.avatar.url}}" />
+                                            </div>
+                                          </div>
                                     </div>
                                 </div>
                         </div>

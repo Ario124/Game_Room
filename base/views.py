@@ -218,12 +218,14 @@ def deleteMessage(request, pk):
 def updateProfile(request, pk):
     about_me = User.objects.all()
     user = User.objects.get(id=pk)
+    avatar = User.objects.all()
 
     if request.method == 'POST':
         about_me = request.POST.get('about_me')
+        avatar = request.POST.get('avatar')
         user.about_me = about_me
         user.save()
         return redirect('home')
 
-    context = {'about_me': about_me}
+    context = {'about_me': about_me, 'avatar':avatar}
     return render(request, 'base/update_profile.html', context)
