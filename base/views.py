@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.db.models import Q
 from .models import User, Room, Topic, Message, State
-from .forms import RoomForm, UserRegisterForm, UserForm
+from .forms import RoomForm, UserRegisterForm, UserAvatarForm
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -219,13 +219,18 @@ def updateProfile(request, pk):
     about_me = User.objects.all()
     user = User.objects.get(id=pk)
     avatar = User.objects.all()
+    form = UserAvatarForm(instance=user)
 
     if request.method == 'POST':
+        form = UserAvatarForm(request.POST, request.FILES, instance=user)
         about_me = request.POST.get('about_me')
-        avatar = request.POST.get('avatar')
+        avatar = form
         user.about_me = about_me
+        user.avatar = avatar
+        form.save()
         user.save()
+
         return redirect('home')
 
-    context = {'about_me': about_me, 'avatar':avatar}
+    context = {'about_me': about_me, 'avatar':avatar, 'form': form}
     return render(request, 'base/update_profile.html', context)

@@ -387,3 +387,18 @@ body {
   color: white;
   box-shadow: 0px 0px 10px 1px rgba(5, 168, 87, 0.6);
 }
+
+.avatar img {
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+.avatar.avatar--large img {
+  display: block;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+}
