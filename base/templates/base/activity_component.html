@@ -27,7 +27,7 @@
                                         </div>
                                         {% endif %}
                                     </div>
-                                    <p>Replied to: <span class="text-success">{{message.room}}</span></p>
+                                    <p>Replied to: <a class="text-success" href="{% url 'room' message.room.id %}">{{message.room}}</a></p>
                                     <p class="text-muted">{{message.created|timesince}} ago.</p>
                                 </div>
                                 <div class="card-body bg-activity text-white">

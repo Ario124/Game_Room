@@ -100,13 +100,31 @@
                             Latest Activity
                         </div>
                         <div class="bg-dark card-body"><canvas id="myBarChart" width="100%" height="10"></canvas>
-                        
-                            <div class="bg-secondary card">
-                                <div class="card-header">
-                                    <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque repellendus ea recusandae ut, iusto quidem culpa. Aspernatur possimus debitis saepe. Ea sequi, eius ipsa reprehenderit voluptate sapiente excepturi aspernatur doloribus incidunt mollitia exercitationem!</p>
+                            <div class="row">
+                                {% for message in room_message %}
+                                <div class="bg-dark card border-success mb-3">
+                                    <div class="card-header bg-dark border-success">
+                                        <div class="row">
+                                            <div class="col-lg-11">
+                                                <p>@<a class="link_host" href="{% url 'user-profile' message.user.id %}">{{message.user}}</a></p>
+                                            </div>
+                                            {% if message.room.host == request.user %}
+                                            <div class="col-lg-1">
+                                                <div class=""><a class="btn_edit" href="{% url 'delete-message' message.id %}"><i class="fa fa-trash text-secondary"></i></a></div>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <p>Replied to: <a class="text-success" href="{% url 'room' message.room.id %}">{{message.room}}</a></p>
+                                        <p class="text-muted">{{message.created|timesince}} ago.</p>
                                     </div>
-                                </div>
+                                    <div class="card-body bg-activity text-white">
+                                      <p class="card-text">"{{message.body}}"</p>
+                                    </div>
+                                    <div class="card-footer bg-dark border-success">
+                                    </div>
+                                    <br>
+                                  </div>
+                                 {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -126,6 +144,18 @@
             </div>
         </div>
     </footer>
+
+
+    <div>
+        {% for message in room_message %}
+        <div>
+            room: {{message.room}}
+            body: {{message.body}}
+        </div>
+        {% endfor %}
+    </div>
+
+
 </div>
 {% endblock %}
 
