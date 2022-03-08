@@ -24,7 +24,7 @@ def home(request):
         )
 
 
-    room_pages = Paginator(rooms, 2)
+    room_pages = Paginator(rooms, 4)
     page_number = request.GET.get('page')
     page = room_pages.get_page(page_number)
 
@@ -40,7 +40,7 @@ def room(request, pk):
     page = 'room'
     genre = Topic.objects.all()
     room = Room.objects.get(id=pk)
-    room_messages = room.message_set.all().order_by('-created')
+    room_messages = room.message_set.all().order_by('-created')[0:3]
     participants = room.participants.all()
 
     if request.method == 'POST':
@@ -119,6 +119,8 @@ def userProfile(request, pk):
     rooms = user.room_set.all()
     room_message = user.message_set.all()
     genre = Topic.objects.all()
+
+    room_message = Message.objects.filter()[0:3]
     context = {'user': user, 'rooms':rooms, 'room_message':room_message, 'genre':genre}
     return render(request, 'base/profile.html', context)
 
@@ -220,6 +222,7 @@ def updateProfile(request, pk):
     user = User.objects.get(id=pk)
     avatar = User.objects.all()
     form = UserAvatarForm(instance=user)
+    genre = Topic.objects.all()
 
     if request.method == 'POST':
         form = UserAvatarForm(request.POST, request.FILES, instance=user)
@@ -232,5 +235,5 @@ def updateProfile(request, pk):
 
         return redirect('home')
 
-    context = {'about_me': about_me, 'avatar':avatar, 'form': form}
+    context = {'about_me': about_me, 'avatar':avatar, 'form': form, 'genre': genre}
     return render(request, 'base/update_profile.html', context)
