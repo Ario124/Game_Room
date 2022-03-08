@@ -121,7 +121,8 @@ def userProfile(request, pk):
     genre = Topic.objects.all()
 
     room_message = Message.objects.filter()[0:3]
-    context = {'user': user, 'rooms':rooms, 'room_message':room_message, 'genre':genre}
+    total_messages = Message.objects.all()
+    context = {'user': user, 'rooms':rooms, 'room_message':room_message, 'genre':genre, 'total_messages': total_messages}
     return render(request, 'base/profile.html', context)
 
 
