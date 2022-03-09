@@ -411,3 +411,10 @@ body {
   height: 3rem;
   border-radius: 50%;
 }
+
+
+.grad-testing {
+  background: linear-gradient(90deg, #0ba360, #0d6efd, #adb5bd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
