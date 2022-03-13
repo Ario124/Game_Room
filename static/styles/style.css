@@ -174,7 +174,7 @@ body {
 }
 
 .sb-sidenav-dark {
-  background-color: #212529;
+  background-color: #000000;
   color: rgba(255, 255, 255, 0.5);
 }
 .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
@@ -198,9 +198,7 @@ body {
 .sb-sidenav-dark .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
   color: #fff;
 }
-.sb-sidenav-dark .sb-sidenav-footer {
-  background-color: #343a40;
-}
+
 
 .sb-sidenav-light {
   background-color: #f8f9fa;
@@ -309,7 +307,7 @@ body {
 }
 
 .btn_home:hover, .btn_edit:hover, hr {
-  color: rgba(37, 247, 103, 0.9);
+  color: rgba(37, 247, 104, 0.534);
 }
 
 
@@ -414,11 +412,16 @@ body {
 
 
 .gradient {
-  background: linear-gradient(90deg, #0ba360, #24b9a5, #0dfdc9, #adb5bd);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,33,1) 0%, rgba(0,212,255,1) 32%, rgba(255,0,125,1) 79%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .activity-room-name {
   text-decoration: none;
+}
+
+.game-room-title {
+  font-size: x-large;
+  font-weight: 600;
 }

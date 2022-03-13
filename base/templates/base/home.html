@@ -28,7 +28,7 @@
                                     <div class="card-header">
                                         <div class="col-lg-10">
                                             
-                                            <h4>{{room.name}}</h4>
+                                            <h4 class="gradient">{{room.name}}</h4>
                                             <p>@<a class="link_host" href="{% url 'user-profile' room.host.id %}">{{room.host}}</a></p>
                                         </div>
                                             <span class="badge bg-success">{{room.topic}}</span>
@@ -40,9 +40,9 @@
                                 </a>
                                 </div>
                                 {% endfor %}
-                                <div>
+                                <div class="mb-2">
                                     <span>
-                                        {% if page_obj.has_previous %}
+                                        {% if page.has_previous %}
                                             <a href="?page=1">&laquo; First</a>
                                             <a href="?page={{page.previous_page_number}}">Previous</a>
                                         {% endif %}

@@ -15,8 +15,8 @@
                         
                         <div class="row">
                             {% for message in room_messages %}
-                            <div class="bg-dark card border-success mb-3">
-                                <div class="card-header bg-dark border-success">
+                            <div class="bg-dark card mb-3">
+                                <div class="card-header bg-dark">
                                     <div class="row">
                                         <div class="col-lg-11">
                                             <p>@<a class="link_host" href="{% url 'user-profile' message.user.id %}">{{message.user}}</a></p>
@@ -33,7 +33,7 @@
                                 <div class="card-body bg-activity text-white">
                                   <p class="card-text">"{{message.body}}"</p>
                                 </div>
-                                <div class="card-footer bg-dark border-success">
+                                <div class="card-footer bg-dark">
                                 </div>
                                 <br>
                               </div>

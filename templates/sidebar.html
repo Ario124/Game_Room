@@ -24,7 +24,6 @@
                     {% if request.user.is_authenticated %}
                     <div class="sb-sidenav-footer">
                         <div class="medium text-light">Logged in as:</div>
-                        <br>
                         <p class="h4 text-light"><a class="link_host" href="{% url 'user-profile' request.user.id %}">{{request.user.username}}</a></p>
                         <hr>
                     </div>
