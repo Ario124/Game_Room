@@ -7,9 +7,11 @@
                         <div class="nav">
                             <br>
                             <a href="{% url 'create-room' %}"><button class="bn632-hover bn22">Create Room</button></a>
-                            <div class="sb-sidenav-menu-heading">Genre</div>
+                            <div class="sb-sidenav-menu-heading text-light">
+                                <h6>Genre</h6>
+                            </div>
                             {% for g in genre %}
-                            <a class="nav-link" href="{% url 'home' %}?q={{g.name}}"><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>{{g.name}}</a>
+                            <a class="nav-link gradient" href="{% url 'home' %}?q={{g.name}}"><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>{{g.name}}</a>
                             {% endfor %}
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
