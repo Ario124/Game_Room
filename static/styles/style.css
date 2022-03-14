@@ -426,3 +426,12 @@ body {
   font-size: x-large;
   font-weight: 600;
 }
+
+.navbar-expand .navbar-nav .dropdown-menu {
+  top: 74%;
+  background-color: #000;
+}
+
+.dropdown-item {
+  color: white;
+}
