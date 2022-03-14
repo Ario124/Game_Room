@@ -54,6 +54,14 @@
                                                     {{room.state}}
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    Participants: 
+                                                </div>
+                                                <div class="col-4 text-center">
+                                                    {{room.participants.count}}
+                                                </div>
+                                            </div>
                                             <div class="col-lg-10 pt-4">
                                                 <p>Host: <a class="link_host" href="{% url 'user-profile' room.host.id %}">{{room.host}}</a></p>
                                             </div>  
