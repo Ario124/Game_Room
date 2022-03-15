@@ -22,41 +22,84 @@
                         </div>
                         <div class="card-body2"><canvas id="myAreaChart" width="100%" height="10"></canvas>
                             {% for room in page %}
+
                             <a class="btn_home" href="{%  url 'room' room.id %}">
                             <div class="game-card {% cycle 'bg-dark' 'bg-dark2' %} card mb-4">
-                                
-                                    <div class="card-header">
-                                        <div class="col-lg-10">
-                                            
-                                            <h4 class="gradient">{{room.name}}</h4>
-                                            <p>@<a class="link_host" href="{% url 'user-profile' room.host.id %}">{{room.host}}</a></p>
-                                        </div>
-                                            <span class="badge bg-success">{{room.topic}}</span>
-                                            <hr>
-                                            <div class="text-muted">
-                                                Created: {{room.created|timesince}} ago
-                                              </div>
+                                <div class="card-header">
+                                    <div class="col-lg-10">
+                                        
+                                        <h4 class="gradient">{{room.name}}</h4>
+                                        <p>@<a class="link_host" href="{% url 'user-profile' room.host.id %}">{{room.host}}</a></p>
                                     </div>
+                                        <span class="badge bg-success">{{room.topic}}</span>
+                                        <hr>
+                                        <div class="text-muted">
+                                            Created: {{room.created|timesince}} ago
+                                            </div>
+                                </div>
                                 </a>
                                 </div>
                                 {% endfor %}
-                                <div class="mb-2">
-                                    <span>
-                                        {% if page.has_previous %}
-                                            <a href="?page=1">&laquo; First</a>
-                                            <a href="?page={{page.previous_page_number}}">Previous</a>
-                                        {% endif %}
 
-                                        <span>
-                                            Page {{page.number}} of {{page.paginator.num_pages}}
+                                <!--Pagination-->
+                                <nav>
+                                    <ul class="pagination justify-content-center">
+                                    {% if page.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=1">First</a>
+                                    </li>
+                                        <li class="page-item">
+                                        <a class="page-link" href="?page={{ page.previous_page_number }}">Previous</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="?page=1">First</a>
+                                        </li>
+                                        <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Previous</a>
+                                        </li>
+                                    {% endif %}
+
+                                    {% if page.number|add:'-4' > 1 %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ page.number|add:'-5' }}">&hellip;</a></li>
+                                    {% endif %}
+
+                                    {% for i in page.paginator.page_range %}
+                                        {% if page.number == i %}
+                                            <li class="page-item active" aria-current="page">
+                                        <span class="page-link">
+                                            {{ i }}
+                                            <span class="sr-only">(current)</span>
                                         </span>
+                                            </li>
+                                        {% elif i > page.number|add:'-5' and i < page.number|add:'5' %}
+                                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
 
-                                        {% if page.has_next %}
-                                        <a href="?page={{page.next_page_number}}">Next</a>
-                                        <a href="?page={{page.paginator.num_pages}}">&raquo; Last</a>
-                                       {% endif %}
-                                    </span>
-                                </div>
+                                    {% if page.paginator.num_pages > page.number|add:'4' %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ page.number|add:'5' }}">&hellip;</a></li>
+                                    {% endif %}
+
+                                    {% if page.has_next %}
+                                        <li class="page-item">
+                                        <a class="page-link" href="?page={{ page.next_page_number }}">Next</a>
+                                        </li>
+
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{page.paginator.num_pages}}">Last</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Next</a>
+                                        </li>
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="?page={{page.paginator.num_pages}}">Last</a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                                </nav>
+                                <!--end of Pagination-->
                         </div>
                     </div>
                 </div>
