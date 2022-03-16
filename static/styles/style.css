@@ -71,7 +71,7 @@ body {
 }
 .sb-nav-fixed .sb-topnav {
   z-index: 1039;
-  background-color:#00000012;
+  background-color:#0d111725;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
   width: 225px;
@@ -175,7 +175,7 @@ body {
 }
 
 .sb-sidenav-dark {
-  background-color: #000000;
+  background-color: #0d1117;
   color: rgba(255, 255, 255, 0.5);
 }
 .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
