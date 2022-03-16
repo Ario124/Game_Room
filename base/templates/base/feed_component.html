@@ -22,7 +22,7 @@
             {% for room in rooms %}
           <tr>
             <th scope="row">#{{room.id}}</th>
-            <td><a href="{% url 'room' room.id %}">{{room.name}}</a></td>
+            <td><a class ="text-success" href="{% url 'room' room.id %}">{{room.name}}</a></td>
             <td>{{room.topic.name}}</td>
             <td>{{room.created|timesince}} ago.</td>
           </tr>
