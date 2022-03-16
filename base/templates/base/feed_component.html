@@ -5,11 +5,30 @@
         <a href="{% url 'update-room' room.id %}">Edit</a>
         <a href="{% url 'delete-room' room.id %}">Delete</a>
         {% endif %}
-
-        <h4>{{room.id}} -- <a href="{% url 'room' room.id %}">{{room.name}}</a></h4>
-        <small>Genre: {{room.topic.name}}</small>
-        <hr>
     </div>
 
     {% endfor %}
+<div class="container">
+    <table class="table text-light">
+        <thead>
+          <tr>
+            <th scope="row">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Created</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for room in rooms %}
+          <tr>
+            <th scope="row">#{{room.id}}</th>
+            <td><a href="{% url 'room' room.id %}">{{room.name}}</a></td>
+            <td>{{room.topic.name}}</td>
+            <td>{{room.created|timesince}} ago.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
 </div>
