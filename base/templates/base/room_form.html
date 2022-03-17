@@ -29,7 +29,7 @@
                                                     <label class="mb-3" for="genre">Genre</label>
                                                     <select class="form-control" id="genre" name="genre">
                                                         {% for g in genre %}
-                                                        <option>{{g.name}}</option>
+                                                        <option class="bg-dark">{{g.name}}</option>
                                                         {% endfor %}
                                                           
                                                     </select>
@@ -39,7 +39,7 @@
                                                         <label class="mb-3" for="state">State</label>
                                                         <select class="form-control" id="state" name="state">
                                                             {% for s in state %}
-                                                            <option>{{s.name}}</option>
+                                                            <option class="bg-dark">{{s.name}}</option>
                                                             {% endfor %}
                                                               
                                                         </select>

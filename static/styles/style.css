@@ -447,3 +447,12 @@ body {
 .table>:not(:first-child) {
   border-top: none !important;
 }
+
+.fa-edit, .fa-trash {
+  margin-left: 1rem;
+}
+
+.fa-angle-left {
+  margin-right: 1rem;
+}
+
