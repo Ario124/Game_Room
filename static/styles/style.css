@@ -435,3 +435,15 @@ body {
 .dropdown-item {
   color: white;
 }
+
+.table, .table-color > thead > tr > th {
+  border: 1px solid #424242 !important;
+}
+
+.table, .table-color > tbody > tr > td {
+  border: 1px solid #424242 !important;
+}
+
+.table>:not(:first-child) {
+  border-top: none !important;
+}

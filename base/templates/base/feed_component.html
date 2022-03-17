@@ -9,7 +9,7 @@
 
     {% endfor %}
 <div class="container">
-    <table class="table text-light">
+    <table class="table bg-dark text-light table-color">
         <thead>
           <tr>
             <th scope="row">ID</th>
@@ -21,7 +21,7 @@
         <tbody>
             {% for room in rooms %}
           <tr>
-            <th scope="row">#{{room.id}}</th>
+            <th scope="row"><span class="text-muted">#{{room.id}}</span></th>
             <td><a class ="text-success" href="{% url 'room' room.id %}">{{room.name}}</a></td>
             <td>{{room.topic.name}}</td>
             <td>{{room.created|timesince}} ago.</td>
