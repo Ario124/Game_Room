@@ -14,6 +14,7 @@
                     <div class="card-body">
                         
                         <div class="row">
+                            {% if room_messages %}
                             {% for message in room_messages %}
                             <div class="bg-dark card mb-3">
                                 <div class="card-header bg-dark">
@@ -38,6 +39,9 @@
                                 <br>
                               </div>
                              {% endfor %}
+                             {% else %}
+                             <p>There is no activity in this room right now.</p>
+                             {% endif %}
                         </div>
                     </div>
                 </div>
