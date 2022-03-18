@@ -24,7 +24,7 @@
                                         </div>
                                         {% if message.room.host == request.user %}
                                         <div class="col-lg-1">
-                                            <div class=""><a class="btn_edit" href="{% url 'delete-message' message.id %}"><i class="fa fa-trash text-secondary"></i></a></div>
+                                            <div class=""><a class="btn_edit" href="{% url 'delete-message' message.id %}"><i class="fa fa-trash text-danger"></i></a></div>
                                         </div>
                                         {% endif %}
                                     </div>
