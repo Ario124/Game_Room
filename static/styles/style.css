@@ -429,11 +429,11 @@ body {
 
 .navbar-expand .navbar-nav .dropdown-menu {
   top: 74%;
-  background-color: #000;
+  background-color: #0d1117;
 }
 
-.dropdown-item {
-  color: white;
+.dropdown-item:hover {
+  background-color: #282828d1;
 }
 
 .table, .table-color > thead > tr > th {
@@ -458,4 +458,8 @@ body {
 .page-item.active, .page-link {
   color: rgb(25,135,84) !important;
   background: #0d1117 !important;
+}
+
+.bg-transparent-chat {
+  background-color:rgb(146 143 143 / 18%);
 }

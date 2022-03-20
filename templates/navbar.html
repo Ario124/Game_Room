@@ -24,9 +24,8 @@
             {% endif %}
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               {% if request.user.is_authenticated %}
-              <li><a class="dropdown-item" href="{% url 'user-profile' request.user.id %}">Profile</a></li>
-              <li><a class="dropdown-item" href="#!">Activity</a></li>
-              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+              <li><a class="dropdown-item text-success" href="{% url 'user-profile' request.user.id %}">Profile</a></li>
+              <li><a class="dropdown-item text-success" href="{% url 'logout' %}">Logout</a></li>
               {% else %}
               <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
               <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>
