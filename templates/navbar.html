@@ -27,8 +27,8 @@
               <li><a class="dropdown-item text-success" href="{% url 'user-profile' request.user.id %}">Profile</a></li>
               <li><a class="dropdown-item text-success" href="{% url 'logout' %}">Logout</a></li>
               {% else %}
-              <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
-              <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>
+              <li><a class="dropdown-item text-success" href="{% url 'login' %}">Login</a></li>
+              <li><a class="dropdown-item text-success" href="{% url 'register' %}">Register</a></li>
               {% endif %}
           </ul>
         </div>
