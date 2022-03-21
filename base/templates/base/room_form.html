@@ -61,21 +61,53 @@
                 
                 <div class="col-xl-4">
                     <div class="bg-dark text-light card mb-4">
+                        {% if page == 'room' %}
+                        <h3 class="text-center">Room Activity</h3>
+                        {% else %}
                         <h3 class="text-center">Activity</h3>
+                        {% endif %}
                         <div class="card-header">
                             <i class="fas fa-chart-bar me-1"></i>
                             Latest Activity
                         </div>
-                        <div class="bg-dark card-body"><canvas id="myBarChart" width="100%" height="10"></canvas>
-                        
-                            <div class="bg-secondary card">
+                            <div class="bg-dark card">
                                 <div class="card-header">
                                     <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque repellendus ea recusandae ut, iusto quidem culpa. Aspernatur possimus debitis saepe. Ea sequi, eius ipsa reprehenderit voluptate sapiente excepturi aspernatur doloribus incidunt mollitia exercitationem!</p>
+                                        
+                                        <div class="row">
+                                            {% if room_messages %}
+                                            {% for message in room_messages %}
+                                            <div class="bg-dark card mb-3">
+                                                <div class="card-header bg-dark">
+                                                    <div class="row">
+                                                        <div class="col-lg-11">
+                                                            <p>@<a class="link_host" href="{% url 'user-profile' message.user.id %}">{{message.user}}</a></p>
+                                                        </div>
+                                                        {% if message.room.host == request.user %}
+                                                        <div class="col-lg-1">
+                                                            <div class=""><a class="btn_edit" href="{% url 'delete-message' message.id %}"><i class="fa fa-trash text-danger"></i></a></div>
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <p>Replied to: <a class="text-success activity-room-name" href="{% url 'room' message.room.id %}">{{message.room}}</a></p>
+                                                    <p class="text-muted">{{message.created|timesince}} ago.</p>
+                                                </div>
+                                                <div class="card-body bg-activity text-white">
+                                                  <p class="card-text">"{{message.body}}"</p>
+                                                </div>
+                                                <div class="card-footer bg-dark">
+                                                </div>
+                                                <br>
+                                              </div>
+                                             {% endfor %}
+                                             {% else %}
+                                             <p>There is no activity in this room right now.</p>
+                                             {% endif %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
