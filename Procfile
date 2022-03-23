@@ -1,1 +1,1 @@
-web:gunicorn gameroom.wsgi
+web: gunicorn gameroom.wsgi:application
