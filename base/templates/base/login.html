@@ -26,7 +26,9 @@
                                         <span class="badge bg-success">{{room.topic}}</span>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-lg-4 offset-4 mb-3">
+                                            <div class="col-lg-4">
+                                            </div>
+                                            <div class="col-lg-4 text-center">
                                                 {% if page == 'login' %}
                                                 <form method="POST" action="">
                                                     {% csrf_token %}
@@ -86,14 +88,11 @@
                                                         <input type="password" class="text-center form-control" name="password2" placeholder="Enter Password">
                                                     </div>
                                                     <br>
-                                                    <button type="submit" class="bn633-hover bn22">Register</button>
+                                                    <div class="form-group p-3">
+                                                        <button type="submit" class="bn633-hover bn22">Register</button>
+                                                    </div>
                                                 </form>
-                                                <hr>
-                                                <p>Already signed up yet?</p>
-                                                <a class="sign-up" href="{% url 'login' %}">Login</a>
-
                                                 {% endif %}
-                                                
                                             </div>
                                             <hr>
                                         </div> 
@@ -107,6 +106,8 @@
             </div>
 
         </div>
+
+
     </main>
     {% include 'footer.html' %}
 </div>
