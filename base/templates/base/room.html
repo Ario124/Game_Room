@@ -92,6 +92,7 @@
                                             </div>
 
                                           <br>
+                                          {% if request.user.is_authenticated %}
                                             <div class="form-group rounded-bottom rounded">
                                                 <form method="POST" action="">
                                                     {% csrf_token %}
@@ -107,6 +108,9 @@
                                                     </div>
                                                 </form>
                                             </div>
+                                            {% else %}
+                                            <p>You must be logged in to send messages.</p>
+                                            {% endif %}
                                             <hr>
                                             <br>
                                           </div>
