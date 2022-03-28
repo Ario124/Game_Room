@@ -21,6 +21,7 @@
                             </span>
                         </div>
                         <div class="card-body2"><canvas id="myAreaChart" width="100%" height="10"></canvas>
+                            {% if room_count > 0 %}
                             {% for room in page %}
 
                             <a class="btn_home" href="{%  url 'room' room.id %}">
@@ -99,6 +100,11 @@
                                     {% endif %}
                                 </ul>
                                 </nav>
+                                {% else %}
+                                <div class="card-body">
+                                    <p>There are no rooms created at this moment.</p>
+                                </div>
+                                {% endif %}
                                 <!--end of Pagination-->
                         </div>
                     </div>

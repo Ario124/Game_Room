@@ -10,9 +10,15 @@
                             <div class="sb-sidenav-menu-heading text-light">
                                 <h6>Genre</h6>
                             </div>
+                            {% if genre.count > 0 %}
                             {% for g in genre %}
                             <a class="nav-link gradient" href="{% url 'home' %}?q={{g.name}}"><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>{{g.name}}</a>
                             {% endfor %}
+                            {% else %}
+                            <div class="sb-sidenav-menu-heading text-light">
+                                <p>There are no genres available at this moment.</p>
+                            </div>
+                            {% endif %}
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
