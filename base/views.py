@@ -12,8 +12,6 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 
-
-
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
 
@@ -134,23 +132,27 @@ def createRoom(request):
 
     if request.method == 'POST':
 
-        state_name = request.POST['state']
-        state = State.objects.get(name=state_name)
+        room_name = request.POST.get('name')
+        room_name_length = len(room_name)
 
-        genre_name = request.POST.get('genre')
-        genre = Topic.objects.get(name=genre_name)
+        if room_name_length > 3:
+            state_name = request.POST['state']
+            state = State.objects.get(name=state_name)
+
+            genre_name = request.POST.get('genre')
+            genre = Topic.objects.get(name=genre_name)
+            Room.objects.create(
+                host = request.user,
+                topic = genre,
+                state = state,
+                name = request.POST.get('name'),
+                description = request.POST.get('description')
+            )
 
 
-        Room.objects.create(
-            host = request.user,
-            topic = genre,
-            state = state,
-            name = request.POST.get('name'),
-            description = request.POST.get('description')
-        )
-
-
-        return redirect('home')
+            return redirect('home')
+        else:
+            messages.error(request, "Your room name must contain at least 3 characters.")
 
 
     context = {'genre': genre, 'state': state, 'room_messages': room_messages}
@@ -159,6 +161,7 @@ def createRoom(request):
 
 @login_required(login_url='login')
 def updateRoom(request, pk):
+    page = 'update-room'
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
     genre = Topic.objects.all()
@@ -183,7 +186,7 @@ def updateRoom(request, pk):
         room.save()
         return redirect('home')
 
-    context = {'form': form, 'genre': genre, 'room': room, 'state':state, 'room_messages': room_messages}
+    context = {'form': form, 'genre': genre, 'room': room, 'state':state, 'room_messages': room_messages, 'page':page}
     return render(request, 'base/room_form.html', context)
 
 
