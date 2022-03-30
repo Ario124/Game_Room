@@ -413,7 +413,7 @@ body {
 
 
 .gradient {
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,33,1) 0%, rgba(0,212,255,1) 32%, rgba(255,0,125,1) 79%);
+  background: linear-gradient(28deg, rgb(30 80 24 / 29%) 0%, rgb(67 176 239 / 88%) 0%, rgb(115 255 249 / 65%) 32%, rgb(0 255 149) 79%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
