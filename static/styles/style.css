@@ -463,3 +463,15 @@ body {
 .bg-transparent-chat {
   background-color:rgb(146 143 143 / 18%);
 }
+
+.fa-user {
+  color: #1ba97bdb;
+  font-size: 1.7em;
+}
+
+@media screen and (max-width: 576px) {
+  .far, .fa-2x, .fa-user {
+    color:#1ba97bdb;
+    font-size: 1.2em;
+  }
+}
