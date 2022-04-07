@@ -472,7 +472,20 @@ body {
   }
 }
 
-.test-font {
+.room-font {
   color: olivedrab;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.room-host {
+  text-decoration: none;
+  color: olivedrab;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.room-host:hover {
+  text-decoration: none;
+  font-size: large;
+  color: #61c324e8;
   font-family: 'Source Code Pro', monospace;
 }
