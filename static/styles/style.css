@@ -12,9 +12,6 @@ body {
 }
 
 
-#layoutSidenav {
-  display: flex;
-}
 #layoutSidenav #layoutSidenav_nav {
   flex-basis: 225px;
   flex-shrink: 0;
@@ -24,7 +21,6 @@ body {
 }
 #layoutSidenav #layoutSidenav_content {
   position: relative;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-width: 0;
@@ -474,4 +470,9 @@ body {
     color:#1ba97bdb;
     font-size: 1.2em;
   }
+}
+
+.test-font {
+  color: olivedrab;
+  font-family: 'Source Code Pro', monospace;
 }
