@@ -22,19 +22,22 @@
                             {% if room_count > 0 %}
                             {% for room in page %}
 
-                            <a class="btn_home" href="{%  url 'room' room.id %}">
+                        
                             <div class="game-card {% cycle 'bg-dark' 'bg-dark2' %} card mb-4">
                                 <div class="card-header">
-                                    <div class="col">
-                                        
-                                        <div class="">
-                                            <div class="text-start">
+                                    <div class="row">
+                                        <div class="col-lg-11">
+                                            <a class="btn_home" href="{%  url 'room' room.id %}">
                                                 <h4 class="gradient pb-4">{{room.name}}</h4>
-                                            </div>
+                                            </a>
+                                        </div>
+                                       
+                                        <div class="col-lg-1">
                                             {% if room.host == request.user %}
-                                            <div class="d-flex justify-content-end"><a class="btn_edit pe-2" href="{% url 'delete-room' room.id %}"><i class="fa fa-trash text-danger"></i></a></div>
+                                            <a class="btn_edit pe-2" href="{% url 'delete-room' room.id %}"><i class="fa fa-trash text-danger"></i></a>
                                             {% endif %}
                                         </div>
+                                      
                                     </div>
                                     <div class="">
                                         <div class="row">
@@ -51,7 +54,7 @@
                                         Created: {{room.created|timesince}} ago
                                     </div>
                                 </div>
-                                </a>
+                                
                                 </div>
                                 {% endfor %}
 
