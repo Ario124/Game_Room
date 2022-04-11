@@ -22,7 +22,7 @@
                                 <div class="card-header bg-dark">
                                     <div class="row">
                                         <div class="col-lg-11 col">
-                                            <p>@<a class="link_host" href="{% url 'user-profile' message.user.id %}">{{message.user}}</a></p>
+                                            <p>@<a class="text-capitalize link_host" href="{% url 'user-profile' message.user.id %}">{{message.user}}</a></p>
                                         </div>
                                         {% if message.room.host == request.user %}
                                         <div class="col-lg-1 col-2">

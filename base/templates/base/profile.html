@@ -115,11 +115,11 @@
                                 <div class="bg-dark card mb-3">
                                     <div class="card-header bg-dark">
                                         <div class="row">
-                                            <div class="col-lg-11">
+                                            <div class="col-lg-11 col">
                                                 <p>@<a class="link_host" href="{% url 'user-profile' message.user.id %}">{{message.user}}</a></p>
                                             </div>
                                             {% if message.room.host == request.user %}
-                                            <div class="col-lg-1">
+                                            <div class="col-lg-1 col-2">
                                                 <div class=""><a class="btn_edit" href="{% url 'delete-message' message.id %}"><i class="fa fa-trash text-danger"></i></a></div>
                                             </div>
                                             {% endif %}
