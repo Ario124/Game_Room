@@ -26,13 +26,13 @@
                             <div class="game-card {% cycle 'bg-dark' 'bg-dark2' %} card mb-4">
                                 <div class="card-header">
                                     <div class="row">
-                                        <div class="col-lg-11">
+                                        <div class="col-lg-11 col">
                                             <a class="btn_home" href="{%  url 'room' room.id %}">
                                                 <h4 class="gradient pb-4">{{room.name}}</h4>
                                             </a>
                                         </div>
                                        
-                                        <div class="col-lg-1">
+                                        <div class="col-lg-1 col-2">
                                             {% if room.host == request.user %}
                                             <a class="btn_edit pe-2" href="{% url 'delete-room' room.id %}"><i class="fa fa-trash text-danger"></i></a>
                                             {% endif %}
