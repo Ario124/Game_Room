@@ -489,3 +489,11 @@ body {
   color: #61c324e8;
   font-family: 'Source Code Pro', monospace;
 }
+
+.box-one {
+  height: 55rem;
+  background-color: #85ff861a;
+  margin-left: 14rem;
+  position: absolute;
+  top: 2px;
+}
