@@ -17,52 +17,56 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 
-// Touch the side navigation
-let touchstartY = 0;
-let touchendY = 0;
-let touchstartX = 0
-let touchendX = 0
+// Touch/Swipe the side navigation
+// A least 100 px are a swipe
+// You can use the value relative to screen size: window.innerWidth * .1
+let xDown, yDown
+const offset = 100;
+
 
 const gestureZone = document.getElementById('box');
 
-gestureZone.addEventListener('touchstart', function(event) {
-    touchstartX = event.changedTouches[0].screenX;
-    touchstartY = event.changedTouches[0].screenY;
-}, false);
+gestureZone.addEventListener('touchstart', e => {
+    const firstTouch = getTouch(e);
+  
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+  });
 
-gestureZone.addEventListener('touchend', function(event) {
-    touchendX = event.changedTouches[0].screenX;
-    touchendY = event.changedTouches[0].screenY;
-    handleGesture();
-}, false); 
-
-function handleGesture() {
-    
-    // Swipe left
-
-    if (touchendX <= touchstartX) {
+  gestureZone.addEventListener('touchend', e => {
+    if (!xDown || !yDown) {
+      return;
+    }
+  
+    const {
+      clientX: xUp,
+      clientY: yUp
+    } = getTouch(e);
+    const xDiff = xDown - xUp;
+    const yDiff = yDown - yUp;
+    const xDiffAbs = Math.abs(xDown - xUp);
+    const yDiffAbs = Math.abs(yDown - yUp);
+  
+    // at least <offset> are a swipe
+    if (Math.max(xDiffAbs, yDiffAbs) < offset ) {
+      return;
+    }
+  
+    if (xDiffAbs > yDiffAbs) {
+      if ( xDiff > 0 ) {
         document.body.classList.remove('sb-sidenav-toggled');
-    }
-    
-    // Swipe right
-    
-    if (touchendX >= touchstartX) {
+      } else {
         document.body.classList.add('sb-sidenav-toggled');
+      }
+    } else {
+      if ( yDiff > 0 ) {
+        console.log('up');
+      } else {
+        console.log('down');
+      }
     }
-    
-
-    
-    // Swipe directions
-
-    if (touchendY <= touchstartY) {
-        // console.log('Swiped up');
-    }
-    
-    if (touchendY >= touchstartY) {
-        // console.log('Swiped down');
-    }
-    
-    if (touchendY === touchstartY) {
-        // console.log('Tap');
-    }
-}
+  });
+  
+  function getTouch (e) {
+    return e.changedTouches[0]
+  }
