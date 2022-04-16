@@ -490,10 +490,33 @@ body {
   font-family: 'Source Code Pro', monospace;
 }
 
-.box-one {
+.side-nav-button {
   height: 55rem;
-  background-color: #85ff861a;
+  background-color: transparent;
   margin-left: 14rem;
   position: absolute;
   top: 2px;
+}
+
+.side-nav-button-box-two {
+  height: 6rem;
+  background-color: #214031;
+  width: 2%;
+  top: 23rem;
+  margin-left: -4%;
+}
+
+.side-nav-button-box-three {
+  height: 4rem;
+  background-color: #327c58;
+  width: 1%;
+  top: 18rem;
+  margin-left: -2%;
+}
+
+.side-nav-button-box-three > .fa-angle-double-right {
+  color: #198754;
+  margin-top: 1.5rem;
+  margin-left: 1vw;
+  animation: pulse 4s alternate-reverse infinite;
 }

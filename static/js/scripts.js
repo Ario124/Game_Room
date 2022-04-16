@@ -19,12 +19,12 @@ window.addEventListener('DOMContentLoaded', event => {
 
 // Touch/Swipe the side navigation
 // A least 100 px are a swipe
-// You can use the value relative to screen size: window.innerWidth * .1
+// You can use the value relative to screen size: gestureZone.innerWidth * .1
 let xDown, yDown
 const offset = 100;
 
 
-const gestureZone = document.getElementById('box');
+const gestureZone = document.getElementById('side-nav-button');
 
 gestureZone.addEventListener('touchstart', e => {
     const firstTouch = getTouch(e);
