@@ -491,27 +491,29 @@ body {
 }
 
 .side-nav-button {
-  height: 55rem;
+  height: 6rem;
   background-color: transparent;
   margin-left: 14rem;
   position: absolute;
-  top: 2px;
+  top: 27rem;
+  z-index: -1;
+  width: 13%;
 }
 
 .side-nav-button-box-two {
   height: 6rem;
   background-color: #214031;
   width: 2%;
-  top: 23rem;
-  margin-left: -4%;
+  top: 0rem;
+  margin-left: -155%;
 }
 
 .side-nav-button-box-three {
   height: 4rem;
   background-color: #327c58;
   width: 1%;
-  top: 18rem;
-  margin-left: -2%;
+  top: -5rem;
+  margin-left: -67%;
 }
 
 .side-nav-button-box-three > .fa-angle-double-right {
@@ -519,4 +521,26 @@ body {
   margin-top: 1.5rem;
   margin-left: 1vw;
   animation: pulse 4s alternate-reverse infinite;
+}
+
+.side-nav-button-box-three > .fa-angle-double-left {
+  color: #198754;
+  margin-top: 1.5rem;
+  margin-left: 1vw;
+  animation: pulse 4s alternate-reverse infinite;
+}
+
+
+.side-icon-box {
+  background-color: red;
+  height: 2rem;
+  width: 2rem;
+  top: 3rem;
+  position: absolute;
+}
+
+
+.btn-check:focus+.btn, .btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem rgb(30 172 115) !important;
 }

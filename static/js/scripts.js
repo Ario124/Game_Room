@@ -2,8 +2,6 @@ window.addEventListener('DOMContentLoaded', event => {
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector('#sidebarToggle');
     const sidebarTogglez = document.body.querySelector('#box');
-    let element = document.getElementById('sidebarToggle');
-    let box = document.getElementById('box');
     if (sidebarToggle) {
         sidebarToggle.addEventListener('click', event => {
             event.preventDefault();
@@ -16,6 +14,20 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
+window.addEventListener('DOMContentLoaded', event => {
+  // Toggle the side navigation from side button
+  const sidebarToggle = document.body.querySelector('#side-nav-button');
+  if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', event => {
+          event.preventDefault();
+          document.body.classList.toggle('sb-sidenav-toggled');
+          localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+      });
+  }
+
+
+
+});
 
 // Touch/Swipe the side navigation
 // A least 100 px are a swipe
