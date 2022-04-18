@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', event => {
 // A least 100 px are a swipe
 // You can use the value relative to screen size: gestureZone.innerWidth * .1
 let xDown, yDown
-const offset = 100;
+const offset = 50;
 
 
 const gestureZone = document.getElementById('side-nav-button');
