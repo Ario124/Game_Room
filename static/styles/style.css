@@ -132,6 +132,7 @@ body {
 }
 .sb-sidenav .sb-sidenav-menu {
   flex-grow: 1;
+  margin-top: -2.3rem;
 }
 .sb-sidenav .sb-sidenav-menu .nav {
   flex-direction: column;
@@ -543,4 +544,9 @@ body {
 .btn-check:focus+.btn, .btn:focus {
   outline: 0;
   box-shadow: 0 0 0 0.1rem rgb(30 172 115) !important;
+}
+
+.sidebar-title {
+  margin-left: 1rem;
+  margin-top: -0.9rem;
 }
