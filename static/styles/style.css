@@ -550,3 +550,12 @@ body {
   margin-left: 1rem;
   margin-top: -0.9rem;
 }
+
+.git-btn {
+  color: mediumspringgreen;
+}
+
+.git-btn:hover {
+  border-color: #7dffc0cf;
+  color: mediumspringgreen;
+}
