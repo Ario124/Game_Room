@@ -1,4 +1,4 @@
-<div class="">
+<div>
     <div class="row">
         <h2>Genre</h2>
         <hr>
@@ -7,14 +7,11 @@
 
 {% for g in genre %}
 
-<div class="">
+<div>
     <div class="col-sm-2">
         <div class="">
             <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'home' %}?q={{g.name}}">{{g.name}}</a>
         </div>
     </div>
-    
-    
 </div>
-
 {% endfor %}

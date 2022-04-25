@@ -559,3 +559,17 @@ body {
   border-color: #7dffc0cf;
   color: mediumspringgreen;
 }
+
+
+.footer-box {
+  margin-top: 3rem;
+  margin-left: 14rem;
+}
+
+
+@media screen and (max-width: 576px) {
+  .fab, .fa-github, .fa-2x {
+    color:#1ba97bdb;
+    font-size: 1.6em;
+  }
+}
