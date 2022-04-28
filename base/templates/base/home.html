@@ -7,22 +7,18 @@
         <div class="container-fluid px-4">
             <div class="row">
                 <div class="col-xl-6 offset-lg-1 offset-sm-0">
-                    <div class="bg-dark text-white mb-4">
+                    <div class="bg-dark text-white card mb-4 pt-3">
                         <h2 class="text-center mb-4">Rooms</h2>
-                        <div class="">
-                            <i class="fas fa-dice-d6 me-1"></i>
-                            <span>
-                                Game Rooms Available: 
-                                <span class="text-green">
-                                    {{room_count}}
-                                </span>
-                            </span>
+                        <div class="card-header">
+                            <div class="">
+                                <div class="d-flex justify-content-center">
+                                    <div><i class="fas fa-dice-d6 me-1"> </i> Game Rooms Available: <span class="gradient fw-bold">{{room_count}}</span></div>
+                                </div>
+                            </div>
                         </div>
-                        <div><canvas width="100%" height="35"></canvas>
+                        <div class="mt-4">
                             {% if room_count > 0 %}
                             {% for room in page %}
-
-                        
                             <div class="game-card {% cycle 'bg-dark' 'bg-dark2' %} card mb-4">
                                 <div class="card-header">
                                     <div class="row">
@@ -41,7 +37,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                        <p>Project Owner: <span class="mx-1"><a class="text-capitalize room-host" href="{% url 'user-profile' room.host.id %}">{{room.host}}</a></span></p>
+                                        <p>Project Owner: <span class="mx-1"><a class="text-capitalize gradient room-host" href="{% url 'user-profile' room.host.id %}">{{room.host}}</a></span></p>
                                         </div>
                                     </div>
 
@@ -57,6 +53,7 @@
                                 {% endfor %}
 
                                 <!--Pagination-->
+                                {% if room_count > 4 %}
                                 <nav>
                                     <ul class="pagination justify-content-center">
                                     {% if page.has_previous %}
@@ -114,6 +111,7 @@
                                     {% endif %}
                                 </ul>
                                 </nav>
+                                {% endif %}
                                 {% else %}
                                 <div class="card-body">
                                     <p>There are no rooms created at this moment.</p>
