@@ -1,5 +1,3 @@
-# Game Room
-
 # [Game Room](https://game-room-ht.herokuapp.com/)
 
 ## About
