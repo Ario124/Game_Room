@@ -1,10 +1,10 @@
 # Game Room
 
+# [Game Room] (https://game-room-ht.herokuapp.com/)
 
 ## About
 
-* ...
-* ...
+* Game Room is ment to be used as a platform where developers can recruit individuals with interest to game related projects.
 
 
 ## Initial Setup
