@@ -32,9 +32,10 @@
                                             <hr>
                                             <div class="row">
                                                 <div class="col-lg-12 text-center">
-                                                    <p>Description</p>
+                                                    <i class="far fa-desc fa-file-alt mb-1"></i>
+                                                    <p>Description</p> 
                                                 </div>
-                                                <div class="col-lg-12 mb-3 d-flex justify-content-center">
+                                                <div class="room-font text-capitalize col-lg-12 mb-3 d-flex justify-content-center">
                                                     {{room.description}}
                                                 </div>
                                                 <hr>
@@ -43,6 +44,7 @@
 
                                             <div class="row">
                                                 <div class="col-lg-12 text-center">
+                                                    <i class="fas fa-genre fa-gamepad mb-1"></i>
                                                     <p>Genre</p>
                                                 </div>
                                                 <div class="text-center">
@@ -52,6 +54,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 text-center">
+                                                    <i class="fas fa-state fa-tasks mb-1"></i>
                                                     <p>State</p>
                                                 </div>
                                                 <div class="text-center">
@@ -61,6 +64,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12 text-center">
+                                                    <i class="fas fa-participants fa-users mb-1"></i>
                                                     <p>Participants</p>
                                                 </div>
                                                 <div class="text-center">
@@ -76,7 +80,7 @@
                                                     <p>Project Owner</p>
                                                 </div>
                                                 <div class="text-center mb-3">
-                                                    <p class="text-capitalize"><a class="room-host" href="{% url 'user-profile' room.host.id %}">{{room.host}}</a></p>
+                                                    <p class="text-capitalize"><a class="room-host gradient" href="{% url 'user-profile' room.host.id %}">{{room.host}}</a></p>
                                                 </div>
                                                 <hr>
                                             </div>

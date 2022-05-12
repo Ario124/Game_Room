@@ -573,3 +573,45 @@ body {
     font-size: 1.6em;
   }
 }
+
+.far, .fa-desc, .fa-file-alt {
+  font-size: 1.6em;
+}
+
+@media screen and (max-width: 576px) {
+  .far, .fa-genre, .fa-file-alt  {
+    font-size: 1.2em;
+  }
+}
+
+
+.fas, .fa-desc, .fa-gamepad {
+  font-size: 1.6em;
+}
+
+@media screen and (max-width: 576px) {
+  .fas, .fa-genre, .fa-gamepad {
+    font-size: 1.2em;
+  }
+}
+
+.fas, .fa-tasks, .fa-state {
+  font-size: 1.6em;
+}
+
+@media screen and (max-width: 576px) {
+  .fas, .fa-tasks, .fa-state {
+    font-size: 1.2em;
+  }
+}
+
+.fas, .fa-users, .fa-participants {
+  font-size: 1.6em;
+}
+
+@media screen and (max-width: 576px) {
+  .fas, .fa-users, .fa-participants {
+    font-size: 1.2em;
+  }
+}
+
