@@ -615,3 +615,10 @@ body {
   }
 }
 
+.page-item.active .page-link {
+  border-image: linear-gradient(272deg, #00ff9c3d, #10ff00) 1;
+}
+
+.page-link:focus {
+  box-shadow: 0 0 0 0.1rem rgb(0 223 107 / 35%);
+}
