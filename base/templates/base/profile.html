@@ -76,7 +76,9 @@
                                               {% if not user.about_me %}
                                               <p><span class="text-capitalize">{{user.username}}</span> has no information here yet..</p>
                                               {% else %}
+                                              {% if user.about_me != 'None' %}
                                               <p>{{user.about_me}}</p>
+                                              {% endif %}
                                               {% endif %}
                                               </div>
                                             </div>

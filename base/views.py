@@ -229,7 +229,9 @@ def updateProfile(request, pk):
     avatar = User.objects.all()
     form = UserAvatarForm(instance=user)
     genre = Topic.objects.all()
+    room_message = user.message_set.all()
 
+    room_message = Message.objects.filter()[0:3]
     if request.method == 'POST':
         form = UserAvatarForm(request.POST, request.FILES, instance=user)
         about_me = request.POST.get('about_me')
@@ -241,5 +243,5 @@ def updateProfile(request, pk):
 
         return redirect('home')
 
-    context = {'about_me': about_me, 'avatar':avatar, 'form': form, 'genre': genre}
+    context = {'about_me': about_me, 'avatar':avatar, 'form': form, 'genre': genre, 'room_message': room_message}
     return render(request, 'base/update_profile.html', context)

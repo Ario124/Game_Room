@@ -73,9 +73,15 @@
                                                 <hr>
                                             </div>
                                             <div class="row">
+                                                {% if room.host.avatar %}
                                                 <div class="mt-3 avatar avatar--large d-flex justify-content-center">
-                                                    <img src="{{user.avatar.url}}" />
+                                                    <img src="{{room.host.avatar.url}}" />
                                                 </div>
+                                              {% else %}
+                                              <div class="mt-3 avatar avatar--large d-flex justify-content-center">
+                                                <i class="far fa-2x fa-user"></i>
+                                            </div>
+                                              {%  endif %}
                                                 <div class="col-lg-12 text-center">
                                                     <p>Project Owner</p>
                                                 </div>
