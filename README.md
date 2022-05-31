@@ -4,6 +4,9 @@
 
 * Game Room is ment to be used as a platform where developers can recruit individuals with interest to game related projects.
 
+* Users can create rooms with information to display for visitors.
+* Users can participate and chat in the selected room.
+
 
 ## Initial Setup
 
