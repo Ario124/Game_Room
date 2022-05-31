@@ -39,9 +39,9 @@ SECRET_KEY = env('SECRET_KEY')
 
 # ALLOWED_HOSTS = ['game-room-ht.herokuapp.com']
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['game-room-ht.herokuapp.com']
+ALLOWED_HOSTS = ['']
 
 
 # Application definition
@@ -99,23 +99,23 @@ WSGI_APPLICATION = 'gameroom.wsgi.application'
 
 ### USER FOR HEROKU ###
 
-if "DATABASE_URL" in os.environ:
-    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+# if "DATABASE_URL" in os.environ:
+#     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3',
+#         }
 #     }
-# }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 
