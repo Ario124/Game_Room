@@ -6,6 +6,8 @@
 
 * Users can create rooms with information to display for visitors.
 * Users can participate and chat in the selected room.
+* Users can upload profile picture
+* Users can upload bio in profile page
 
 
 ## Initial Setup
